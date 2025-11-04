@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <title>CV Maker</title>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                   
+                    colors: {
+                        'primary': '#11224E',
+                        'secondary': '#F87B1B',
+                        'tertiary': '#CBD99B',
+                        'quaternary': '#EEEEEE',
+
+
+                    }
                 }
             }
         }
     </script>
 </head>
+
 <body>
+    <header class="header  z-[-4] py-8">
+        <div id="progressBar"
+            class="w-[50%] bg-quaternary rounded-full z-[-2] relative flex justify-around h-8 items-center mx-auto">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <i class="fa fa-address-card" aria-hidden="true"></i>
+
+            <div id="progress" class="w-[25%] bg-tertiary z-[-1] rounded-full absolute h-[100%] top-0 left-[0%]"></div>
+        </div>
+    </header>
     
+
+    <button id="prevButton" onclick="PrevProgress()" class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
+        Prevouis
+    </button>
+    <button id="nextButton" onclick="NextProgress()" class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
+        Next
+    </button>
+
+
+    <script src="./assets/js/components.js"></script>
 </body>
+
 </html>
