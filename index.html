@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,303 +25,187 @@
 
 <body class="overflow-x-hidden bg-primary">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute left-0 top-0 z-[-3] h-[100%]">
-        <path fill="#F87B1B" fill-opacity="1"
-            d="M0,160L40,170.7C80,181,160,203,240,181.3C320,160,400,96,480,96C560,96,640,160,720,170.7C800,181,880,139,960,133.3C1040,128,1120,160,1200,176C1280,192,1360,192,1400,192L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
-        </path>
+        <path fill="#F87B1B" fill-opacity="1" d="M0,160L40,170.7C80,181,160,203,240,181.3C320,160,400,96,480,96C560,96,640,160,720,170.7C800,181,880,139,960,133.3C1040,128,1120,160,1200,176C1280,192,1360,192,1400,192L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
     </svg>
+
     <header class="header flex flex-col justify-between z-[-4] h-36 py-4">
-        <!-- <div class="boxes">
-    <div class="box">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <div class="box">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <div class="box">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <div class="box">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div> -->
-        <h2 class="text-4xl font-bold text-primary ">CV Maker</h2>
-        </div>
-        <div id="progressBar"
-            class="w-[50%] bg-quaternary rounded-full z-[-2] relative flex justify-around h-8 items-center mx-auto">
+        <h2 class="text-4xl font-bold text-primary text-center">CV Maker</h2>
+        <div id="progressBar" class="w-[50%] bg-quaternary rounded-full z-[-2] relative flex justify-around h-8 items-center mx-auto">
             <i class="fa fa-user" aria-hidden="true"></i>
             <i class="fa fa-graduation-cap" aria-hidden="true"></i>
             <i class="fa fa-code" aria-hidden="true"></i>
             <i class="fa fa-check-circle" aria-hidden="true"></i>
-
-            <div id="progress"
-                class="w-[25%] duration-300 ease-in bg-tertiary z-[-1] rounded-full absolute h-[100%] top-0 left-[0%]">
-            </div>
+            <div id="progress" class="w-[25%] duration-300 ease-in bg-tertiary z-[-1] rounded-full absolute h-[100%] top-0 left-[0%]"></div>
         </div>
     </header>
 
     <main class="main flex flex-col items-center align-middle text-center w-full">
-        <section id="stepper" class=" bg-quaternary px-20 pt-10 pb-10 w-[70%] rounded-xl mb-[70px]">
+        <section id="stepper" class="bg-quaternary px-20 pt-10 pb-10 w-[70%] rounded-xl mb-[70px]">
             <form action="" id="stepper__form">
-                <div id="step1" class="stepper__form__step active  text-left">
+                
+                <div id="step1" class="stepper__form__step active text-left">
                     <h2 class="text-3xl font-bold text-primary mb-6 text-center">Personal Information</h2>
 
-                    <div class="flex flex-col md:flex-row gap-8 mb-8">
-                        <label for="file" class="custum-file-upload">
-                            <div class="icon">
-                                <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
-                                            fill="#EEEEEE"></path>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="text">
-                                <span>Click to upload image</span>
-                            </div>
-                            <input id="file" type="file">
-                        </label>
-
-                        <div class="flex-1">
-                            <div class="grid-2 mb-4">
-                                <div class="form-group">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" id="firstName" name="firstName"
-                                        class="border border-gray-300 rounded-md p-2 w-full"
-                                        placeholder="Enter your first name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" id="lastName" name="lastName"
-                                        class="border border-gray-300 rounded-md p-2 w-full"
-                                        placeholder="Enter your last name" required>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email
-                                Address</label>
-                            <input type="email" id="email" name="email" placeholder="example@email.com" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
                         </div>
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+1234567890" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
+                            <input type="tel" id="phone" name="phone" placeholder="+1234567890" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
                         </div>
                     </div>
 
                     <div class="mb-6">
                         <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                        <input type="text" id="address" name="address" placeholder="Enter your street address" required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
+                        <input type="text" id="address" name="address" placeholder="Enter your street address" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
-                            <input type="text" id="city" name="city" placeholder="Enter your city" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
+                            <input type="text" id="city" name="city" placeholder="Enter your city" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
                         </div>
                         <div>
                             <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                            <input type="text" id="country" name="country" placeholder="Enter your country" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
+                            <input type="text" id="country" name="country" placeholder="Enter your country" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
                         </div>
                     </div>
 
                     <div>
-                        <label for="summary" class="block text-sm font-medium text-gray-700 mb-1">Professional
-                            Summary</label>
-                        <textarea id="summary" name="summary" rows="4"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200"
-                            placeholder="Briefly describe your professional background and key skills"
-                            required></textarea>
+                        <label for="summary" class="block text-sm font-medium text-gray-700 mb-1">Professional Summary</label>
+                        <textarea id="summary" name="summary" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200" placeholder="Briefly describe your professional background and key skills" required></textarea>
                     </div>
                 </div>
-                <div id="step2" class="stepper__form__step">
+
+                <div id="step2" class="stepper__form__step" style="display:none;">
                     <h2 class="text-3xl font-bold text-primary mb-6 text-center">Education & Work Experience</h2>
 
-                    <!-- Education Section -->
                     <h3 class="text-2xl font-semibold text-primary mb-4">Education</h3>
                     <div class="education-entry mb-8 p-4 border border-gray-200 rounded-lg">
-                        <div class="grid-2 mb-4">
-                            <div class="form-group">
-                                <label for="institution">Institution</label>
-                                <input type="text" id="institution" name="institution"
-                                    placeholder="Enter institution name" required
-                                    class="border border-gray-300 rounded-md p-2 w-full">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <label for="institution" class="block text-sm font-medium text-gray-700 mb-1">Institution</label>
+                                <input type="text" id="institution" name="institution" placeholder="Enter institution name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
-                            <div class="form-group">
-                                <label for="degree">Degree/Certificate</label>
-                                <input type="text" id="degree" name="degree"
-                                    placeholder="Enter degree or certificate name" required
-                                    class="border border-gray-300 rounded-md p-2 w-full">
+                            <div>
+                                <label for="degree" class="block text-sm font-medium text-gray-700 mb-1">Degree/Certificate</label>
+                                <input type="text" id="degree" name="degree" placeholder="Enter degree or certificate name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                         </div>
 
-                        <div class="grid-2 mb-4">
-                            <div class="form-group">
-                                <label for="fieldOfStudy">Field of Study</label>
-                                <input type="text" id="fieldOfStudy" name="fieldOfStudy"
-                                    placeholder="Enter field of study" required
-                                    class="border border-gray-300 rounded-md p-2 w-full">
-                            </div>
-
+                        <div class="mb-4">
+                            <label for="fieldOfStudy" class="block text-sm font-medium text-gray-700 mb-1">Field of Study</label>
+                            <input type="text" id="fieldOfStudy" name="fieldOfStudy" placeholder="Enter field of study" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                         </div>
 
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label for="startDate">Start Date</label>
-                                <input type="month" id="startDate" name="startDate" required
-                                    class="border border-gray-300 rounded-md p-2 w-full">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                                <input type="month" id="startDate" name="startDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
-                            <div class="form-group">
-                                <label for="endDate">End Date</label>
-                                <input type="month" id="endDate" name="endDate" required
-                                    class="border border-gray-300 rounded-md p-2 w-full">
+                            <div>
+                                <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                                <input type="month" id="endDate" name="endDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                         </div>
 
-                        <div class="form-group mt-4">
-                            <label for="educationDescription">Description</label>
-                            <textarea id="educationDescription" name="educationDescription" rows="3"
-                                class="border border-gray-300 rounded-md p-2 w-full"
-                                placeholder="Describe your academic achievements, relevant coursework, etc."
-                                required></textarea>
+                        <div>
+                            <label for="educationDescription" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                            <textarea id="educationDescription" name="educationDescription" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Describe your academic achievements, relevant coursework, etc." required></textarea>
                         </div>
                     </div>
 
-                    <button type="button" class="px-4 py-2 bg-tertiary text-primary rounded-md font-medium mb-6">
-                        <i class="fas fa-plus mr-2"></i>Add Another Education
-                    </button>
-                    <h3 class="text-2xl font-semibold text-primary mb-4">Work experience</h3>
-
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Work Experience</h3>
                     <div class="experience-entry mb-8 p-4 border border-gray-200 rounded-lg">
-                        <div class="form-group mb-4">
-                            <label for="jobTitleExp">Job Title</label>
-                            <input type="text" id="jobTitleExp" name="jobTitleExp" placeholder="Enter your job title"
-                                required class="border border-gray-300 rounded-md p-2 w-full">
+                        <div class="mb-4">
+                            <label for="jobTitleExp" class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+                            <input type="text" id="jobTitleExp" name="jobTitleExp" placeholder="Enter your job title" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                         </div>
 
-                        <div class="form-group mb-4">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company" placeholder="Enter company name" required
-                                class="border border-gray-300 rounded-md p-2 w-full">
+                        <div class="mb-4">
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                            <input type="text" id="company" name="company" placeholder="Enter company name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                         </div>
 
-                        <div class="grid-2 mb-4">
-                            <div class="form-group">
-                                <label for="startDateExp">Start Date</label>
-                                <input type="month" id="startDateExp" name="startDateExp" required
-                                    class="border border-gray-300 rounded-md p-2 w-full">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <label for="startDateExp" class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                                <input type="month" id="startDateExp" name="startDateExp" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
-                            <div class="form-group">
-                                <label for="endDateExp">End Date</label>
-                                <input type="month" id="endDateExp" name="endDateExp" required
-                                    class="border border-gray-300 rounded-md p-2 w-full">
+                            <div>
+                                <label for="endDateExp" class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                                <input type="month" id="endDateExp" name="endDateExp" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="experienceDescription">Description</label>
-                            <textarea id="experienceDescription" name="experienceDescription" rows="4"
-                                class="border border-gray-300 rounded-md p-2 w-full"
-                                placeholder="Describe your responsibilities, achievements, and skills used in this role"
-                                required></textarea>
+                        <div>
+                            <label for="experienceDescription" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                            <textarea id="experienceDescription" name="experienceDescription" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Describe your responsibilities, achievements, and skills used in this role" required></textarea>
                         </div>
                     </div>
-
-                    <button type="button" class="px-4 py-2 bg-tertiary text-primary rounded-md font-medium mb-6">
-                        <i class="fas fa-plus mr-2"></i>Add Another Experience
-                    </button>
                 </div>
 
-                </div>
-                <div id="step3" class="stepper__form__step">
+                <div id="step3" class="stepper__form__step" style="display:none;">
                     <h2 class="text-3xl font-bold text-primary mb-6 text-center">Skills & Languages</h2>
 
                     <div class="mb-8">
                         <h3 class="text-xl font-semibold text-primary mb-4">Professional Skills</h3>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <div class="form-group">
-                                <label for="skill1">Skill 1</label>
-                                <div class="flex items-center">
-                                    <input type="text" id="skill1" name="skill1" placeholder="Enter skill" required
-                                        class="skill border border-gray-300 rounded-l-md p-2 w-full">
-                                    <button class="border border-gray-300 rounded-r-md p-2">
-sdf
-                                    </button>
-                                </div>
-                            </div>
-
+                        <div class="mb-4">
+                            <label for="skill1" class="block text-sm font-medium text-gray-700 mb-1">Skill 1</label>
+                            <input type="text" id="skill1" name="skill1" class="skill w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Enter skill" required>
                         </div>
-
                     </div>
 
                     <div>
                         <h3 class="text-xl font-semibold text-primary mb-4">Languages</h3>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="form-group">
-                                <label for="language1">Language 1</label>
-                                <div class="flex items-center">
-                                    <input  type="text" id="language1" name="language1"
-                                        placeholder="Enter language" required
-                                        class="language border border-gray-300 rounded-l-md p-2 w-full">
-                                    <select name="language1-level" id="language1-level"
-                                        class="border border-gray-300 rounded-r-md p-2">
-                                        <option value="native">Native</option>
-                                        <option value="fluent">Fluent</option>
-                                        <option value="conversational">Conversational</option>
-                                        <option value="basic">Basic</option>
-                                    </select>
-                                </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="language1" class="block text-sm font-medium text-gray-700 mb-1">Language 1</label>
+                                <input type="text" id="language1" name="language1" class="language w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Enter language" required>
+                            </div>
+                            <div>
+                                <label for="language1-level" class="block text-sm font-medium text-gray-700 mb-1">Level</label>
+                                <select name="language1-level" id="language1-level" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                    <option value="native">Native</option>
+                                    <option value="fluent">Fluent</option>
+                                    <option value="conversational">Conversational</option>
+                                    <option value="basic">Basic</option>
+                                </select>
                             </div>
                         </div>
-
-                        <button type="button" class="px-4 py-2 bg-tertiary text-primary rounded-md font-medium mt-4">
-                            <i class="fas fa-plus mr-2"></i>Add Another Language
-                        </button>
                     </div>
                 </div>
 
-                <!-- Step 4: Skills -->
-                <div id="step4" class="stepper__form__step">
+                <div id="step4" class="stepper__form__step" style="display:none;">
+                    <h2 class="text-3xl font-bold text-primary mb-6 text-center">Complete!</h2>
+                    <p class="text-center text-gray-600">Your CV has been created successfully.</p>
                 </div>
             </form>
+
             <div>
-                <button id="prevButton" class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
+                <button type="button" id="prevButton" class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
                     Previous
                 </button>
-                <button id="nextButton" class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
+                <button type="button" id="nextButton" class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
                     Next
                 </button>
             </div>
         </section>
-
-
     </main>
 
     <script type="module" src="./assets/js/app.js"></script>
 </body>
-
 </html>
