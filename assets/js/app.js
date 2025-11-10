@@ -9,40 +9,55 @@ let counter = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
 
-   function handleFormDisplay() {
-      for(let i = 0; i < formSteps.length; i++){
-         if(i !== counter){
-            formSteps[i].style.display = "none";
-         }
-         else{
-            formSteps[i].style.display = "block";
-         }    
-      }
-   }
+    //    validation.loadFromStorage();
 
-   function intializeApp() {
-      handleFormDisplay();
-      
-      nextButton.addEventListener("click", () => {
-         if(validation.validateCurrentStep(counter)) {
-            helpers.NextProgress(progress);
-            counter++;
-            if(counter >= formSteps.length){
-               counter = formSteps.length - 1;
+    function handleFormDisplay() {
+        for (let i = 0; i < formSteps.length; i++) {
+            if (i !== counter) {
+                formSteps[i].style.display = "none";
+            }
+            else {
+                formSteps[i].style.display = "block";
+            }
+        }
+    }
+
+    function intializeApp() {
+        handleFormDisplay();
+
+        nextButton.addEventListener("click", (e) => {
+            if (validation.validateCurrentStep(counter)) {
+                helpers.NextProgress(progress);
+                counter++;
+                if (counter >= formSteps.length) {
+                    counter = formSteps.length - 1;
+                }
+                handleFormDisplay();
+            }
+            if (counter == 2) {
+                nextButton.innerText = "Submit";
+                nextButton.setAttribute("type", "submit");
+            }
+            if (counter == 3) {
+                e.preventDefault();
+                helpers.saveData();
+            }
+        });
+
+        prevButton.addEventListener("click", (e) => {
+            helpers.PrevProgress(progress);
+            if (counter == 2) {
+                nextButton.innerText = "Next";
+                nextButton.setAttribute("type", "button");
+
+            }
+            counter--;
+            if (counter < 0) {
+                counter = 0;
             }
             handleFormDisplay();
-         }
-      });
+        });
+    }
 
-      prevButton.addEventListener("click", () => {
-         helpers.PrevProgress(progress);
-         counter--;
-         if(counter < 0){
-            counter = 0;
-         }
-         handleFormDisplay();
-      });
-   }
-
-   intializeApp();
+    intializeApp();
 });
