@@ -5,11 +5,12 @@ const progress = document.getElementById("progress");
 const nextButton = document.getElementById("nextButton");
 const prevButton = document.getElementById("prevButton");
 const formSteps = document.querySelectorAll(".stepper__form__step");
+
 let counter = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
+    
 
-    //    validation.loadFromStorage();
 
     function handleFormDisplay() {
         for (let i = 0; i < formSteps.length; i++) {
@@ -38,11 +39,13 @@ window.addEventListener("DOMContentLoaded", () => {
                 nextButton.innerText = "Submit";
                 nextButton.setAttribute("type", "submit");
             }
-            if (counter == 3) {
-                e.preventDefault();
-                helpers.saveData();
-            }
+        
         });
+        document.getElementById("stepper__form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            helpers.saveData();
+            // alert("Form Submitted Successfully");
+        })
 
         prevButton.addEventListener("click", (e) => {
             helpers.PrevProgress(progress);
@@ -58,6 +61,37 @@ window.addEventListener("DOMContentLoaded", () => {
             handleFormDisplay();
         });
     }
+
+    document.getElementById("educationArrow").addEventListener("click", (e) => {
+            document.getElementById("educationEntry").classList.toggle("hidden");
+            if (document.getElementById("educationEntry").classList.contains("hidden")) {
+                document.getElementById("educationArrow").classList.remove("fa-chevron-up");
+                document.getElementById("educationArrow").classList.add("fa-chevron-down");
+            }else{
+                document.getElementById("educationArrow").classList.remove("fa-chevron-down");
+                document.getElementById("educationArrow").classList.add("fa-chevron-up");
+            }
+    })
+    document.getElementById("experienceArrow").addEventListener("click", (e) => {
+            document.getElementById("experienceEntry").classList.toggle("hidden");
+            if (document.getElementById("experienceEntry").classList.contains("hidden")) {
+                document.getElementById("experienceArrow").classList.remove("fa-chevron-up");
+                document.getElementById("experienceArrow").classList.add("fa-chevron-down");
+            }else{
+                document.getElementById("experienceArrow").classList.remove("fa-chevron-down");
+                document.getElementById("experienceArrow").classList.add("fa-chevron-up");
+            }
+    })
+    document.getElementById("addLanguage").addEventListener("click", (e) => {
+        e.preventDefault();
+        helpers.addLanguage(e);
+    })
+    document.getElementById("addSkill").addEventListener("click", (e) => {
+        e.preventDefault();
+        helpers.addSkill(e);
+    })
+
+    
 
     intializeApp();
 });

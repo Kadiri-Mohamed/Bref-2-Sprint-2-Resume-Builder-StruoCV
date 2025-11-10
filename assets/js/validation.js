@@ -91,7 +91,7 @@ export function validateCurrentStep(step) {
     if (!checkEmpty(address)) valid = false;
     if (!checkEmpty(city)) valid = false;
     if (!checkEmpty(country)) valid = false;
-    if (!checkText(summary, 20)) valid = false;
+    if (!checkText(summary, 10)) valid = false;
     
     return valid;
   }
@@ -121,8 +121,8 @@ export function validateCurrentStep(step) {
   }
   
   if (step === 2) {
-    const skill = document.getElementById('skill1');
-    const language = document.getElementById('language1');
+    const skill = document.getElementById('skill');
+    const language = document.getElementById('language');
     
     if (!checkEmpty(skill)) valid = false;
     if (!checkEmpty(language)) valid = false;

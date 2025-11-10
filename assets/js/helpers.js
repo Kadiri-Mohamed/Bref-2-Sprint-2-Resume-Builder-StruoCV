@@ -14,6 +14,24 @@ export function PrevProgress(progress) {
   }
 }
 
+let languagesList = [];
+let skillList = [];
+export function addLanguage(e) {
+  languagesList.push({language : document.getElementById("language").value , level : document.getElementById("languageLevel").value});
+  document.getElementById("languagesList").innerHTML += `<li>${document.getElementById("language").value} - ${document.getElementById("languageLevel").value}</li>`;
+  document.getElementById("language").value = "";
+  document.getElementById("languageLevel").value = "";
+  console.log(languagesList);
+
+}
+export function addSkill(e) {
+  skillList.push(document.getElementById("skill").value);
+  document.getElementById("skillsList").innerHTML += `<li>${document.getElementById("skill").value}</li>`;
+  document.getElementById("skill").value = "";
+  console.log(skillList);
+}
+
+
 export function saveData() {
   const userData = {
     personalData: {
@@ -45,18 +63,17 @@ export function saveData() {
         experienceDescription: document.getElementById('experienceDescription').value,
       }
     },
-    skills: {
-      skill1:document.getElementById('skill1').value,
-
-    },
-    languages: {
-      language1: {
-        language: document.getElementById('language1').value,
-        languageLevel: document.getElementById('language1-level').value,
-      }
-    }
+    skills: skillList,
+    languages: languagesList
   };
-
+  
   localStorage.setItem('cvData', JSON.stringify(userData));
+}
+function saveData() {
+  
+}
+function loadData() {
+  const userData = JSON.parse(localStorage.getItem('cvData'));
+  if (userData) return userData;
 }
 

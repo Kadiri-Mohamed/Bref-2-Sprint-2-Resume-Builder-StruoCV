@@ -1,4 +1,4 @@
-
+@import "tailwindcss";
 .boxes {
   --size: 12px;
   --duration: 800ms;
