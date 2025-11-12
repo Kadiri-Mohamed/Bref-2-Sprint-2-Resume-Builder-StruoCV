@@ -9,7 +9,7 @@ const formSteps = document.querySelectorAll(".stepper__form__step");
 let counter = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
-    
+
 
 
     function handleFormDisplay() {
@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 nextButton.innerText = "Submit";
                 nextButton.setAttribute("type", "submit");
             }
-        
+
         });
         document.getElementById("stepper__form").addEventListener("submit", (e) => {
             e.preventDefault();
@@ -63,24 +63,24 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById("educationArrow").addEventListener("click", (e) => {
-            document.getElementById("educationEntry").classList.toggle("hidden");
-            if (document.getElementById("educationEntry").classList.contains("hidden")) {
-                document.getElementById("educationArrow").classList.remove("fa-chevron-up");
-                document.getElementById("educationArrow").classList.add("fa-chevron-down");
-            }else{
-                document.getElementById("educationArrow").classList.remove("fa-chevron-down");
-                document.getElementById("educationArrow").classList.add("fa-chevron-up");
-            }
+        document.getElementById("educationEntry").classList.toggle("hidden");
+        if (document.getElementById("educationEntry").classList.contains("hidden")) {
+            document.getElementById("educationArrow").classList.remove("fa-chevron-up");
+            document.getElementById("educationArrow").classList.add("fa-chevron-down");
+        } else {
+            document.getElementById("educationArrow").classList.remove("fa-chevron-down");
+            document.getElementById("educationArrow").classList.add("fa-chevron-up");
+        }
     })
     document.getElementById("experienceArrow").addEventListener("click", (e) => {
-            document.getElementById("experienceEntry").classList.toggle("hidden");
-            if (document.getElementById("experienceEntry").classList.contains("hidden")) {
-                document.getElementById("experienceArrow").classList.remove("fa-chevron-up");
-                document.getElementById("experienceArrow").classList.add("fa-chevron-down");
-            }else{
-                document.getElementById("experienceArrow").classList.remove("fa-chevron-down");
-                document.getElementById("experienceArrow").classList.add("fa-chevron-up");
-            }
+        document.getElementById("experienceEntry").classList.toggle("hidden");
+        if (document.getElementById("experienceEntry").classList.contains("hidden")) {
+            document.getElementById("experienceArrow").classList.remove("fa-chevron-up");
+            document.getElementById("experienceArrow").classList.add("fa-chevron-down");
+        } else {
+            document.getElementById("experienceArrow").classList.remove("fa-chevron-down");
+            document.getElementById("experienceArrow").classList.add("fa-chevron-up");
+        }
     })
     document.getElementById("addLanguage").addEventListener("click", (e) => {
         e.preventDefault();
@@ -90,8 +90,28 @@ window.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         helpers.addSkill(e);
     })
+    document.getElementById("cvPicInput").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        // console.log(file);
+        const reader = new FileReader();
+        const url = URL.createObjectURL(file);
+        // document.getElementById("cvPic").src = url;
+        reader.onload = (e) => {
+            console.log(e.target.result);
+            document.getElementById("cvPic").src = e.target.result;
+            document.getElementById("cvPic").style.width = "150px";
+            document.getElementById("cvPic").nextElementSibling.style.display = "none";
+            document.getElementById("cvPic").nextElementSibling.nextElementSibling.style.display = "none";
+            // document.getElementById("cvPicInput").style.display = "none";
+        }
+        reader.readAsDataURL(file);
+    })
 
-    
+    // Array(document.getElementsByClassName("deleteSkill")).forEach((element) => {
+    //     element.addEventListener("click", (e) => {
+    //         helpers.de(e);
+    //     })
+    // })
 
     intializeApp();
 });

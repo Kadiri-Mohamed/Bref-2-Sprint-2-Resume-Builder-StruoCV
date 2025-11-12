@@ -1,4 +1,8 @@
 let pro = 0;
+export let languagesList = [];
+export let skillsList = [];
+export let educationsList = [];
+export let experiencesList = [];
 
 export function NextProgress(progress) {
   if (pro < 75) {
@@ -13,22 +17,56 @@ export function PrevProgress(progress) {
     progress.style.left = `${pro}%`;
   }
 }
-
-let languagesList = [];
-let skillList = [];
 export function addLanguage(e) {
-  languagesList.push({language : document.getElementById("language").value , level : document.getElementById("languageLevel").value});
-  document.getElementById("languagesList").innerHTML += `<li>${document.getElementById("language").value} - ${document.getElementById("languageLevel").value}</li>`;
+  languagesList.push({ language: document.getElementById("language").value, level: document.getElementById("languageLevel").value });
+  document.getElementById("languagesList").innerHTML += ` <li class="language flex justify-between bg-tertiary items-center rounded-2xl mt-2">
+       <div class="flex gap-16">
+         <span class="font-semibold text-gray-900 dark:text-white languageName">${document.getElementById("language").value} </span> 
+        <span class="font-semibold text-gray-900 dark:text-white">${document.getElementById("languageLevel").value}</span> 
+       
+       </div>
+        <button type="button" class="text-white deleteLanguage bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">remove</button>
+    </li>  `;
   document.getElementById("language").value = "";
   document.getElementById("languageLevel").value = "";
+  for (let element of document.getElementsByClassName("deleteLanguage")) {
+    element.addEventListener("click", (e) => {
+      deleteLanguage(e);
+    })
+  }
   console.log(languagesList);
 
 }
 export function addSkill(e) {
-  skillList.push(document.getElementById("skill").value);
-  document.getElementById("skillsList").innerHTML += `<li>${document.getElementById("skill").value}</li>`;
+  skillsList.push(document.getElementById("skill").value);
+  // <li>
+  //     <span class="font-semibold text-gray-900 dark:text-white">Bonnie Green</span> with <span class="font-semibold text-gray-900 dark:text-white">70</span> points
+  // </li>
+  document.getElementById("skillsList").innerHTML += ` <li class="skill flex justify-between bg-tertiary items-center rounded-2xl mt-2">
+        <span class="font-semibold text-gray-900 dark:text-white skillName">${document.getElementById("skill").value}</span> 
+        <button type="button" class="text-white deleteSkill bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">remove</button>
+    </li>  `;
   document.getElementById("skill").value = "";
-  console.log(skillList);
+  const deleteSkillButtons = document.getElementsByClassName("deleteSkill");
+  for (const element of deleteSkillButtons) {
+    element.addEventListener("click", (e) => {
+      deleteSkill(e);
+    })
+  }
+  console.log(skillsList);
+}
+
+export function deleteLanguage(e) {
+  const languageElement = e.target.closest('.language');
+  const languageName = languageElement.querySelector('.languageName').textContent.trim();
+  languageElement.remove();
+  languagesList = languagesList.filter((language) => language.language !== languageName);
+}
+export function deleteSkill(e) {
+  const skillElement = e.target.closest('.skill');
+  const skillName = skillElement.querySelector('.skillName').textContent.trim();
+  skillElement.remove();
+  skillsList = skillsList.filter((skill) => skill !== skillName);
 }
 
 
@@ -63,15 +101,13 @@ export function saveData() {
         experienceDescription: document.getElementById('experienceDescription').value,
       }
     },
-    skills: skillList,
+    skills: skillsList,
     languages: languagesList
   };
-  
+
   localStorage.setItem('cvData', JSON.stringify(userData));
 }
-function saveData() {
-  
-}
+
 function loadData() {
   const userData = JSON.parse(localStorage.getItem('cvData'));
   if (userData) return userData;

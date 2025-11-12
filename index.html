@@ -47,11 +47,29 @@
 
     <main class="main flex flex-col items-center align-middle text-center w-full">
         <section id="stepper" class="bg-quaternary px-20 pt-10 pb-10 w-[70%] rounded-xl mb-[70px]">
-            <form action="" id="stepper__form" >
+            <form action="" id="stepper__form">
 
                 <div id="step1" class="stepper__form__step active text-left">
                     <h2 class="text-3xl font-bold text-primary mb-6 text-center">Personal Information</h2>
-                    <input type="file" class="bg-amber-500">
+                    <!-- From Uiverse.io by ParasSalunke -->
+                    <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl " >
+                        <div class="md:flex">
+                            <div class="w-full p-3">
+                                <div
+                                    class="relative h-48 rounded-lg border bg-gray-50 flex justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                                    <div class="absolute flex flex-col items-center">
+                                        <img alt="File Icon" class="mb-3" id="cvPic"
+                                            src="https://img.icons8.com/dusk/64/000000/file.png" />
+                                        <span class="block text-gray-500 font-semibold">Drag your CV picture here</span>
+                                        <span class="block text-gray-400 font-normal mt-1">or click to upload</span>
+                                    </div>
+
+                                    <input id="cvPicInput"  name="" class="h-full w-full opacity-0 cursor-pointer" type="file" accept=".jpg,.jpeg,.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
@@ -77,7 +95,7 @@
                         </div>
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+1234567890" required
+                            <input type="tel" id="phone" name="phone" placeholder="+212 6 00 00 00 00" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tertiary focus:border-transparent transition-all duration-200">
                         </div>
                     </div>
@@ -219,7 +237,7 @@
                                 <label for="skill" class="block text-sm font-medium text-gray-700 mb-1">Skill </label>
                                 <input type="text" id="skill" name="skill"
                                     class="skill w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                    placeholder="Enter skill" required>
+                                    placeholder="Enter skill" >
                             </div>
                             <button
                                 class="bg-tertiary w-8 h-8 rounded-full flex justify-center items-center text-white mt-4"
@@ -228,9 +246,9 @@
                             </button>
 
                         </div>
-                        <div id="skillsList">
+                        <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400" id="skillsList">
 
-                        </div>
+                        </ol>
                     </div>
 
                     <div>
@@ -241,7 +259,7 @@
                                 </label>
                                 <input type="text" id="language" name="language"
                                     class="language w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                    placeholder="Enter language" required>
+                                    placeholder="Enter language" >
                             </div>
                             <div class="w-[40%]">
                                 <label for="language-level"

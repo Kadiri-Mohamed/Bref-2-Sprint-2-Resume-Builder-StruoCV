@@ -1,3 +1,9 @@
+  /* regexes */
+  const nameRegex = /^[A-Za-z\s]{3,}$/;
+  const emailRegex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+  const phoneRegex = /^\+212[67]\d{8}$/;
+  const linksRegex = /^https?:\/\/[^\s]+$/;
+import {skillsList, languagesList} from "./helpers.js";
 function checkEmpty(input) {
   if (input.value.trim() === "") {
     showError(input, "This field is required");
@@ -13,7 +19,7 @@ function checkEmail(input) {
     showError(input, "Email is required");
     return false;
   }
-  if (!value.includes("@") || !value.includes(".")) {
+  if (emailRegex.test(value) === false) {
     showError(input, "Please enter a valid email");
     return false;
   }
@@ -27,9 +33,8 @@ function checkPhone(input) {
     showError(input, "Phone is required");
     return false;
   }
-  const numbers = value.replace(/[^0-9]/g, '');
-  if (numbers.length < 10) {
-    showError(input, "Phone must have at least 10 digits");
+  if ( phoneRegex.test(value) === false) {
+    showError(input, "Phone must have to be valid (+212)");
     return false;
   }
   clearError(input);
@@ -120,12 +125,10 @@ export function validateCurrentStep(step) {
     return valid;
   }
   
-  if (step === 2) {
-    const skill = document.getElementById('skill');
-    const language = document.getElementById('language');
+  if (step === 2) {;
+    if(skillsList.length < 1) valid = false;
+    if(languagesList.length < 1) valid = false;
     
-    if (!checkEmpty(skill)) valid = false;
-    if (!checkEmpty(language)) valid = false;
     
     return valid;
   }
