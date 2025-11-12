@@ -5,8 +5,8 @@ const progress = document.getElementById("progress");
 const nextButton = document.getElementById("nextButton");
 const prevButton = document.getElementById("prevButton");
 const formSteps = document.querySelectorAll(".stepper__form__step");
-
-let counter = 0;
+let data = {};
+let counter = 2;
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -38,6 +38,12 @@ window.addEventListener("DOMContentLoaded", () => {
             if (counter == 2) {
                 nextButton.innerText = "Submit";
                 nextButton.setAttribute("type", "submit");
+            }
+            if (counter == 3) {
+                data = helpers.loadData();
+                let cvPic = data.personalData.cvPic;
+                console.log(typeof data.personalData.cvPic);
+                document.getElementById("cvPicValidation").src = cvPic;
             }
 
         });
@@ -86,26 +92,23 @@ window.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         helpers.addLanguage(e);
     })
+    document.getElementById("addExperience").addEventListener("click", (e) => {
+        e.preventDefault();
+        helpers.addExperience(e);
+    })
+    document.getElementById("addEducation").addEventListener("click", (e) => {
+        e.preventDefault();
+        helpers.addEducation(e);
+    })
     document.getElementById("addSkill").addEventListener("click", (e) => {
         e.preventDefault();
         helpers.addSkill(e);
     })
     document.getElementById("cvPicInput").addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        // console.log(file);
-        const reader = new FileReader();
-        const url = URL.createObjectURL(file);
-        // document.getElementById("cvPic").src = url;
-        reader.onload = (e) => {
-            console.log(e.target.result);
-            document.getElementById("cvPic").src = e.target.result;
-            document.getElementById("cvPic").style.width = "150px";
-            document.getElementById("cvPic").nextElementSibling.style.display = "none";
-            document.getElementById("cvPic").nextElementSibling.nextElementSibling.style.display = "none";
-            // document.getElementById("cvPicInput").style.display = "none";
-        }
-        reader.readAsDataURL(file);
-    })
+        e.preventDefault();
+        helpers.getPicture(e);
+    });
+
 
     // Array(document.getElementsByClassName("deleteSkill")).forEach((element) => {
     //     element.addEventListener("click", (e) => {

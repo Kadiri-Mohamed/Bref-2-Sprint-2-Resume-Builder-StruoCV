@@ -37,6 +37,8 @@ export function addLanguage(e) {
   console.log(languagesList);
 
 }
+
+// add
 export function addSkill(e) {
   skillsList.push(document.getElementById("skill").value);
   // <li>
@@ -55,6 +57,156 @@ export function addSkill(e) {
   }
   console.log(skillsList);
 }
+export function addEducation() {
+  //  institution: document.getElementById('institution').value,
+  //       degree: document.getElementById('degree').value,
+  //       fieldOfStudy: document.getElementById('fieldOfStudy').value,
+  //       startDate: document.getElementById('startDate').value,
+  //       endDate: document.getElementById('endDate').value,
+  //       educationDescription: document.getElementById('educationDescription').value,
+
+
+  const institution = document.getElementById("institution").value;
+  const degree = document.getElementById("degree").value;
+  const fieldOfStudy = document.getElementById("fieldOfStudy").value;
+  const startDate = document.getElementById("startDate").value;
+  const endDate = document.getElementById("endDate").value;
+  const educationDescription = document.getElementById("educationDescription").value;
+
+  if (institution === "" || degree === "" || fieldOfStudy === "" || startDate === "" || educationDescription === "") {
+    alert("Please fill out all fields of the education ");
+    return;
+  }
+  if (endDate) {
+    if (startDate > endDate) {
+      alert("Please enter a valid date");
+      return;
+    }
+  }
+  const education = {
+    institution,
+    degree,
+    fieldOfStudy,
+    startDate,
+    endDate: endDate === "" ? "Present" : endDate,
+    educationDescription,
+
+  }
+  educationsList.push(education);
+  console.log(educationsList);
+  // institution = "";
+  // degree = "";
+  // fieldOfStudy = "";
+  // startDate = "";
+  // endDate = "";
+  // educationDescription = "";
+
+
+  displayEducation();
+  const deleteEducationButtons = document.getElementsByClassName("deleteEducation");
+  // console.log(deleteEducationButtons[0]);
+  for (const element of deleteEducationButtons) {
+    element.addEventListener("click", (e) => {
+      // console.log(e.target);
+      deleteEducation(e);
+    })
+  }
+  return education;
+
+}
+export function addExperience(e) {
+  //  jobTitleExp: document.getElementById('jobTitleExp').value,
+  //         company: document.getElementById('company').value,
+  //         startDateExp: document.getElementById('startDateExp').value,
+  //         endDateExp: document.getElementById('endDateExp').value,
+  //         experienceDescription: document.getElementById('experienceDescription').value,
+  const jobTitleExp = document.getElementById("jobTitleExp").value;
+  const company = document.getElementById("company").value;
+  const startDateExp = document.getElementById("startDateExp").value;
+  const endDateExp = document.getElementById("endDateExp").value;
+  const experienceDescription = document.getElementById("experienceDescription").value;
+
+  if (jobTitleExp === "" || company === "" || startDateExp === "" || experienceDescription === "") {
+    // test on date value
+    alert("Please fill all fields of experience");
+    return;
+  }
+  if (endDateExp) {
+    if (startDateExp > endDateExp) {
+      alert("Please enter a valid date");
+      return;
+    }
+  }
+  const experience = {
+    jobTitleExp,
+    company,
+    startDateExp,
+    endDateExp: endDateExp === "" ? "Present" : endDateExp,
+    experienceDescription,
+
+  }
+  experiencesList.push(experience);
+  displayExperiences();
+  const deleteExprienceButtons = document.getElementsByClassName("deleteExprience");
+  // console.log(deleteExprienceButtons[0]);
+  for (const element of deleteExprienceButtons) {
+    element.addEventListener("click", (e) => {
+      // console.log(e.target);
+      deleteExperience(e);
+    })
+  }
+  console.log(experiencesList);
+}
+// display
+function displayEducation() {
+  document.getElementById("EducationsList").innerHTML = "";
+  educationsList.forEach((education) => {
+
+    document.getElementById("EducationsList").innerHTML += `
+    <tr class="education bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 ">
+                <th scope="row"  class="educationName px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    ${education.institution}
+                </th>
+                <td class="px-6 py-4">
+                    ${education.degree}
+                </td>
+                <td class="px-6 py-4">
+                    ${education.fieldOfStudy}
+                </td>
+                <td class="px-6 py-4">
+                    ${education.startDate} - ${education.endDate}
+                </td>
+                <td class="px-6 py-4">
+                 <button type="button" class="text-white deleteEducation bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">remove</button>
+                </td>
+              </tr>
+    `
+  })
+}
+function displayExperiences() {
+  document.getElementById("ExperiecesList").innerHTML = ""
+  experiencesList.forEach((experience) => {
+    document.getElementById("ExperiecesList").innerHTML += `
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 experience">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white experienceName">
+                    ${experience.jobTitleExp}
+                </th>
+                <td class="px-6 py-4">
+                    ${experience.company}
+                </td>
+                <td class="px-6 py-4">
+                    ${experience.startDateExp} - ${experience.endDateExp}
+                </td>
+                <td class="px-6 py-4">
+                    <button type="button" class="text-white deleteExprience bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">remove</button>
+                </td>
+            </tr>
+                      `
+  });
+}
+
+// delete
+
 
 export function deleteLanguage(e) {
   const languageElement = e.target.closest('.language');
@@ -68,11 +220,47 @@ export function deleteSkill(e) {
   skillElement.remove();
   skillsList = skillsList.filter((skill) => skill !== skillName);
 }
+export function deleteExperience(e) {
+  const experienceElement = e.target.closest('.experience');
+  const experienceName = experienceElement.querySelector('.experienceName').textContent.trim();
+  experienceElement.remove();
+  experiencesList = experiencesList.filter((experience) => experience.jobTitleExp !== experienceName);
+}
+export function deleteEducation(e) {
+  const educationElement = e.target.closest('.education');
+  const educationName = educationElement.querySelector('.educationName').textContent.trim();
+  educationElement.remove();
+  educationsList = educationsList.filter((education) => education.institution !== educationName);
+}
 
 
-export function saveData() {
+// helpers 
+export function getPicture(e) {
+  const file = e.target.files[0];
+  if (file && file.size <= 2 * 1024 * 1024) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (e) => {
+      // console.log(e.target.result);
+      document.getElementById("cvPic").style.width = "150px";
+      document.getElementById("cvPic").nextElementSibling.style.display = "none";
+      document.getElementById("cvPic").nextElementSibling.nextElementSibling.style.display = "none";
+      document.getElementById("cvPic").src = e.target.result;
+      // console.log(typeof e.target.result);
+      saveData(e.target.result);
+    }
+
+  } else {
+    alert("File size should be less than 2MB");
+  }
+
+}
+
+
+export function saveData(cvPic) {
   const userData = {
     personalData: {
+      cvPic: cvPic,
       firstName: document.getElementById('firstName').value,
       lastName: document.getElementById('lastName').value,
       email: document.getElementById('email').value,
@@ -82,25 +270,8 @@ export function saveData() {
       country: document.getElementById('country').value,
       summary: document.getElementById('summary').value,
     },
-    educations: {
-      education1: {
-        institution: document.getElementById('institution').value,
-        degree: document.getElementById('degree').value,
-        fieldOfStudy: document.getElementById('fieldOfStudy').value,
-        startDate: document.getElementById('startDate').value,
-        endDate: document.getElementById('endDate').value,
-        educationDescription: document.getElementById('educationDescription').value,
-      }
-    },
-    experiences: {
-      experience1: {
-        jobTitleExp: document.getElementById('jobTitleExp').value,
-        company: document.getElementById('company').value,
-        startDateExp: document.getElementById('startDateExp').value,
-        endDateExp: document.getElementById('endDateExp').value,
-        experienceDescription: document.getElementById('experienceDescription').value,
-      }
-    },
+    educations: educationsList,
+    experiences: experiencesList,
     skills: skillsList,
     languages: languagesList
   };
@@ -108,7 +279,7 @@ export function saveData() {
   localStorage.setItem('cvData', JSON.stringify(userData));
 }
 
-function loadData() {
+export function loadData() {
   const userData = JSON.parse(localStorage.getItem('cvData'));
   if (userData) return userData;
 }

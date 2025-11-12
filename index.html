@@ -25,7 +25,7 @@
 </head>
 
 <body class="overflow-x-hidden bg-primary">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute left-0 top-0 z-[-3] h-[100%]">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute left-0 top-0 z-[-3] h-full">
         <path fill="#F87B1B" fill-opacity="1"
             d="M0,160L40,170.7C80,181,160,203,240,181.3C320,160,400,96,480,96C560,96,640,160,720,170.7C800,181,880,139,960,133.3C1040,128,1120,160,1200,176C1280,192,1360,192,1400,192L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
         </path>
@@ -40,7 +40,7 @@
             <i class="fa fa-code" aria-hidden="true"></i>
             <i class="fa fa-check-circle" aria-hidden="true"></i>
             <div id="progress"
-                class="w-[25%] duration-300 ease-in bg-tertiary z-[-1] rounded-full absolute h-[100%] top-0 left-[0%]">
+                class="w-[25%] duration-300 ease-in bg-tertiary z-[-1] rounded-full absolute h-full top-0 left-[0%]">
             </div>
         </div>
     </header>
@@ -52,7 +52,7 @@
                 <div id="step1" class="stepper__form__step active text-left">
                     <h2 class="text-3xl font-bold text-primary mb-6 text-center">Personal Information</h2>
                     <!-- From Uiverse.io by ParasSalunke -->
-                    <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl " >
+                    <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl ">
                         <div class="md:flex">
                             <div class="w-full p-3">
                                 <div
@@ -64,7 +64,8 @@
                                         <span class="block text-gray-400 font-normal mt-1">or click to upload</span>
                                     </div>
 
-                                    <input id="cvPicInput"  name="" class="h-full w-full opacity-0 cursor-pointer" type="file" accept=".jpg,.jpeg,.png" />
+                                    <input id="cvPicInput" name="" class="h-full w-full opacity-0 cursor-pointer"
+                                        type="file" accept=".jpg,.jpeg,.png" />
                                 </div>
                             </div>
                         </div>
@@ -182,7 +183,17 @@
                                 placeholder="Describe your academic achievements, relevant coursework, etc."
                                 required></textarea>
                         </div>
+                        <button
+                            class="bg-tertiary text-black px-3 align-middle h-8 rounded-lg flex justify-center items-cente mt-4"
+                            id="addEducation">
+                            vaidate education
+                        </button>
                     </div>
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody id="EducationsList">
+
+                        </tbody>
+                    </table>
 
                     <h3 class="text-2xl font-semibold text-primary mb-4">Work Experience <i class="fa fa-chevron-down"
                             aria-hidden="true" id="experienceArrow"></i> </h3>
@@ -224,7 +235,17 @@
                                 placeholder="Describe your responsibilities, achievements, and skills used in this role"
                                 required></textarea>
                         </div>
+                        <button
+                            class="bg-tertiary text-black px-3 align-middle h-8 rounded-lg flex justify-center items-cente mt-4"
+                            id="addExperience">
+                            vaidate experience
+                        </button>
                     </div>
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <tbody id="ExperiecesList">
+
+                        </tbody>
+                    </table>
                 </div>
 
                 <div id="step3" class="stepper__form__step" style="display:none;">
@@ -237,7 +258,7 @@
                                 <label for="skill" class="block text-sm font-medium text-gray-700 mb-1">Skill </label>
                                 <input type="text" id="skill" name="skill"
                                     class="skill w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                    placeholder="Enter skill" >
+                                    placeholder="Enter skill">
                             </div>
                             <button
                                 class="bg-tertiary w-8 h-8 rounded-full flex justify-center items-center text-white mt-4"
@@ -246,7 +267,8 @@
                             </button>
 
                         </div>
-                        <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400" id="skillsList">
+                        <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400"
+                            id="skillsList">
 
                         </ol>
                     </div>
@@ -259,7 +281,7 @@
                                 </label>
                                 <input type="text" id="language" name="language"
                                     class="language w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                    placeholder="Enter language" >
+                                    placeholder="Enter language">
                             </div>
                             <div class="w-[40%]">
                                 <label for="language-level"
@@ -289,6 +311,7 @@
 
                 <div id="step4" class="stepper__form__step" style="display:none;">
                     <h2 class="text-3xl font-bold text-primary mb-6 text-center">Complete!</h2>
+                    <img id="cvPicValidation" alt="">
                     <p class="text-center text-gray-600">Your CV has been created successfully.</p>
                 </div>
                 <div>

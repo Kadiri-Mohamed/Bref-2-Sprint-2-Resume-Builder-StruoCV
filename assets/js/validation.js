@@ -1,9 +1,9 @@
-  /* regexes */
-  const nameRegex = /^[A-Za-z\s]{3,}$/;
-  const emailRegex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
-  const phoneRegex = /^\+212[67]\d{8}$/;
-  const linksRegex = /^https?:\/\/[^\s]+$/;
-import {skillsList, languagesList} from "./helpers.js";
+/* regexes */
+const nameRegex = /^[A-Za-z\s]{3,}$/;
+const emailRegex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+const phoneRegex = /^\+212[67]\d{8}$/;
+const linksRegex = /^https?:\/\/[^\s]+$/;
+import { skillsList, languagesList, educationsList, experiencesList } from "./helpers.js";
 function checkEmpty(input) {
   if (input.value.trim() === "") {
     showError(input, "This field is required");
@@ -33,7 +33,7 @@ function checkPhone(input) {
     showError(input, "Phone is required");
     return false;
   }
-  if ( phoneRegex.test(value) === false) {
+  if (phoneRegex.test(value) === false) {
     showError(input, "Phone must have to be valid (+212)");
     return false;
   }
@@ -59,7 +59,7 @@ function showError(input, message) {
   clearError(input);
   input.classList.add('border-red-500');
   input.classList.remove('border-gray-300');
-  
+
   const error = document.createElement('div');
   error.className = 'error-message text-red-500 text-sm mt-1';
   error.textContent = message;
@@ -69,7 +69,7 @@ function showError(input, message) {
 function clearError(input) {
   input.classList.remove('border-red-500');
   input.classList.add('border-gray-300');
-  
+
   const error = input.parentElement.querySelector('.error-message');
   if (error) {
     error.remove();
@@ -78,7 +78,7 @@ function clearError(input) {
 
 export function validateCurrentStep(step) {
   let valid = true;
-  
+
   if (step === 0) {
     const firstName = document.getElementById('firstName');
     const lastName = document.getElementById('lastName');
@@ -88,7 +88,7 @@ export function validateCurrentStep(step) {
     const city = document.getElementById('city');
     const country = document.getElementById('country');
     const summary = document.getElementById('summary');
-    
+
     if (!checkEmpty(firstName)) valid = false;
     if (!checkEmpty(lastName)) valid = false;
     if (!checkEmail(email)) valid = false;
@@ -97,10 +97,10 @@ export function validateCurrentStep(step) {
     if (!checkEmpty(city)) valid = false;
     if (!checkEmpty(country)) valid = false;
     if (!checkText(summary, 10)) valid = false;
-    
+
     return valid;
   }
-  
+
   if (step === 1) {
     const inputs = [
       document.getElementById('institution'),
@@ -115,23 +115,31 @@ export function validateCurrentStep(step) {
       document.getElementById('endDateExp'),
       document.getElementById('experienceDescription')
     ];
-    
-    for (let input of inputs) {
-      if (!checkEmpty(input)) {
-        valid = false;
+
+    if (experiencesList.length < 1 && educationsList.length < 1) {
+      for (let input of inputs) {
+        if (!checkEmpty(input)) valid = false;
       }
+      valid = false
+      alert('Please add at least one experience or education');
     }
-    
+
+
     return valid;
   }
-  
-  if (step === 2) {;
-    if(skillsList.length < 1) valid = false;
-    if(languagesList.length < 1) valid = false;
-    
-    
+
+  if (step === 2) {
+    ;
+    if (skillsList.length < 1 || languagesList.length < 1) {
+      if (!checkEmpty(document.getElementById('skill'))) valid = false;
+      if (!checkEmpty(document.getElementById('language'))) valid = false;
+      valid = false;
+      alert('Please add at least one skill and one language');
+    }
+
+
     return valid;
   }
-  
+
   return true;
 }
