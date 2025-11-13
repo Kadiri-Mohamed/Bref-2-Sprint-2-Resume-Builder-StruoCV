@@ -20,8 +20,8 @@ export function PrevProgress(progress) {
 export function addLanguage(e) {
   languagesList.push({ language: document.getElementById("language").value, level: document.getElementById("languageLevel").value });
   document.getElementById("languagesList").innerHTML += ` <li class="language flex justify-between bg-tertiary items-center rounded-2xl mt-2">
-       <div class="flex gap-16">
-         <span class="font-semibold text-gray-900 dark:text-white languageName">${document.getElementById("language").value} </span> 
+       <div class="flex gap-16 justify-between">
+         <span class="font-semibold px-5 text-gray-900 dark:text-white languageName">${document.getElementById("language").value} </span> 
         <span class="font-semibold text-gray-900 dark:text-white">${document.getElementById("languageLevel").value}</span> 
        
        </div>
@@ -41,11 +41,8 @@ export function addLanguage(e) {
 // add
 export function addSkill(e) {
   skillsList.push(document.getElementById("skill").value);
-  // <li>
-  //     <span class="font-semibold text-gray-900 dark:text-white">Bonnie Green</span> with <span class="font-semibold text-gray-900 dark:text-white">70</span> points
-  // </li>
-  document.getElementById("skillsList").innerHTML += ` <li class="skill flex justify-between bg-tertiary items-center rounded-2xl mt-2">
-        <span class="font-semibold text-gray-900 dark:text-white skillName">${document.getElementById("skill").value}</span> 
+  document.getElementById("skillsList").innerHTML += ` <li class="skill flex justify-between bg-tertiary items-center w-full rounded-2xl mt-2">
+        <span class="font-semibold text-gray-900 dark:text-white skillName px-5">${document.getElementById("skill").value}</span> 
         <button type="button" class="text-white deleteSkill bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">remove</button>
     </li>  `;
   document.getElementById("skill").value = "";

@@ -377,12 +377,9 @@
                         class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
                         Next
                     </button>
-                    <!-- <button type="button" id="telechargerButton"
-                        class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto hidden">
-                        Download
-                    </button> -->
+            
                     <button data-modal-target="default-modal" id="choiceButton" data-modal-toggle="default-modal"
-                        class="hidden text-white bg-secondary text-sm px-7 py-2 rounded-full mt-8 mx-auto text-center"
+                        class=" text-white bg-secondary text-sm px-7 py-2 rounded-full mt-8 mx-auto text-center hidden"
                         type="button">
                         Choose a template
                     </button>
@@ -392,14 +389,14 @@
             <!-- Main modal -->
             <div id="default-modal" tabindex="-1" aria-hidden="true"
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <div class="relative p-4 w-full max-w-4xl max-h-full">
                     <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow-lg dark:bg-gray-700">
                         <!-- Modal header -->
                         <div
                             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                CV choice
+                            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+                                Choose Your CV Template
                             </h3>
                             <button type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -412,18 +409,50 @@
                                 <span class="sr-only">Close modal</span>
                             </button>
                         </div>
+
                         <!-- Modal body -->
-                        <div class="p-4 md:p-5 space-y-4 flex justify-around items-center">
-                            <div class="flex justify-center items-center mt-4">
+                        <div class="p-6 space-y-4">
+                            <p class="text-gray-600 text-center mb-6">Select a template that best represents your
+                                professional style</p>
 
-                                <img src="./assets/images/user4.webp" alt="" class="w-[50%] m-0">
-                            </div>
-                            <div class="flex justify-center items-start " >
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Template 1 - Classic -->
+                                <div class="template-choice border-2 border-gray-300 rounded-lg p-4 hover:border-secondary transition-all cursor-pointer"
+                                    data-template="template1">
+                                    <div class="bg-white rounded-lg overflow-hidden shadow-md mb-4">
+                                        <img src="./assets/images/template1-preview.jpg" alt="Classic Template"
+                                            class="w-full h-48 object-cover">
+                                    </div>
+                                    <h4 class="text-lg font-bold text-primary text-center mb-2">Classic Professional
+                                    </h4>
+                                    <p class="text-sm text-gray-600 text-center mb-4">Clean and traditional layout with
+                                        clear sections</p>
+                                    <button type="button"
+                                        class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-opacity-90 transition-all select-template"
+                                        data-template="template1">
+                                        Select This Template
+                                    </button>
+                                </div>
 
-                                <img src="./assets/images/user4.webp" alt="" class="w-[50%] ">
+                                <!-- Template 2 - Modern -->
+                                <div class="template-choice border-2 border-gray-300 rounded-lg p-4 hover:border-secondary transition-all cursor-pointer"
+                                    data-template="template2">
+                                    <div
+                                        class="bg-gradient-to-br from-primary to-secondary rounded-lg overflow-hidden shadow-md mb-4 flex items-center justify-center h-48">
+                                        <img src="./assets/images/template2-preview.jpg" alt="Modern Template"
+                                            class="w-full h-48 object-cover">
+                                    </div>
+                                    <h4 class="text-lg font-bold text-primary text-center mb-2">Modern Creative</h4>
+                                    <p class="text-sm text-gray-600 text-center mb-4">Bold design with gradient colors
+                                        and modern styling</p>
+                                    <button type="button"
+                                        class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-opacity-90 transition-all select-template"
+                                        data-template="template2">
+                                        Select This Template
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -434,7 +463,6 @@
         </section>
     </main>
     <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script type="module" src="./assets/js/app.js"></script>
 </body>
 

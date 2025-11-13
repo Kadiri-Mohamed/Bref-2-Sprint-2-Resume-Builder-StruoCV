@@ -4,7 +4,6 @@ import * as validation from './validation.js';
 const progress = document.getElementById("progress");
 const nextButton = document.getElementById("nextButton");
 const prevButton = document.getElementById("prevButton");
-const downloadButton = document.getElementById("telechargerButton");
 const choiceButton = document.getElementById("choiceButton");
 const formSteps = document.querySelectorAll(".stepper__form__step");
 let data = {};
@@ -119,21 +118,19 @@ window.addEventListener("DOMContentLoaded", () => {
         helpers.getPicture(e);
     });
 
-    // downloadButton.addEventListener("click", (e) => {
-    //     e.preventDefault();
-    //     var element = document.getElementById('step4');
-    //     var opt = {
-    //         margin: 0,
-    //         filename: 'myCV.pdf',
-    //         image: { type: 'jpeg'},
-    //         html2canvas: { scale: 2 },
-    //         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    //     };
+    document.querySelectorAll('.select-template').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const template = e.target.dataset.template;
+            localStorage.setItem('selectedTemplate', template);
+            if (template === 'template1') {
+                window.open('./assets/templates/template1.html', '_blank');
+            } else if (template === 'template2') {
+                window.open('./assets/templates/template2.html', '_blank');
+            }
+        });
+    });
 
-    //     // New Promise-based usage:
-    //     html2pdf().set(opt).from(element).save();
-    // })
-
+   
 
     // Array(document.getElementsByClassName("deleteSkill")).forEach((element) => {
     //     element.addEventListener("click", (e) => {
