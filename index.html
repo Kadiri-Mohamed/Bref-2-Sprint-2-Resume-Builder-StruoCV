@@ -377,7 +377,7 @@
                         class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
                         Next
                     </button>
-            
+
                     <button data-modal-target="default-modal" id="choiceButton" data-modal-toggle="default-modal"
                         class=" text-white bg-secondary text-sm px-7 py-2 rounded-full mt-8 mx-auto text-center hidden"
                         type="button">
@@ -388,7 +388,7 @@
 
             <!-- Main modal -->
             <div id="default-modal" tabindex="-1" aria-hidden="true"
-                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full">
                 <div class="relative p-4 w-full max-w-4xl max-h-full">
                     <!-- Modal content -->
                     <div class="relative bg-white rounded-lg shadow-lg dark:bg-gray-700">
@@ -416,35 +416,36 @@
                                 professional style</p>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Template 1 - Classic -->
-                                <div class="template-choice border-2 border-gray-300 rounded-lg p-4 hover:border-secondary transition-all cursor-pointer"
+                                <div class="template-choice border-2 border-gray-300 rounded-lg p-4 hover:border-secondary transition-all cursor-pointer flex flex-col justify-between"
                                     data-template="template1">
-                                    <div class="bg-white rounded-lg overflow-hidden shadow-md mb-4">
-                                        <img src="./assets/images/template1-preview.jpg" alt="Classic Template"
-                                            class="w-full h-48 object-cover">
+                                    <div class="bg-white rounded-lg overflow-hidden mb-4">
+                                        <img src="./assets/images/template1.png" alt="Classic Template"
+                                            class="w-full object-cover">
                                     </div>
-                                    <h4 class="text-lg font-bold text-primary text-center mb-2">Classic Professional
-                                    </h4>
-                                    <p class="text-sm text-gray-600 text-center mb-4">Clean and traditional layout with
-                                        clear sections</p>
-                                    <button type="button"
-                                        class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-opacity-90 transition-all select-template"
-                                        data-template="template1">
-                                        Select This Template
-                                    </button>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-primary text-center mb-2">Classic Professional
+                                        </h4>
+                                        <p class="text-sm text-gray-600 text-center mb-4">Clean and traditional layout
+                                            with
+                                            clear sections</p>
+                                        <button type="button"
+                                            class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-opacity-90 transition-all select-template"
+                                            data-template="template1">
+                                            Select This Template
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <!-- Template 2 - Modern -->
                                 <div class="template-choice border-2 border-gray-300 rounded-lg p-4 hover:border-secondary transition-all cursor-pointer"
                                     data-template="template2">
                                     <div
-                                        class="bg-gradient-to-br from-primary to-secondary rounded-lg overflow-hidden shadow-md mb-4 flex items-center justify-center h-48">
-                                        <img src="./assets/images/template2-preview.jpg" alt="Modern Template"
-                                            class="w-full h-48 object-cover">
+                                        class="rounded-lg overflow-hidden shadow-md mb-4 flex items-center justify-center">
+                                        <img src="./assets/images/template2.png" alt="Modern Template"
+                                            class="w-full object-cover">
                                     </div>
                                     <h4 class="text-lg font-bold text-primary text-center mb-2">Modern Creative</h4>
-                                    <p class="text-sm text-gray-600 text-center mb-4">Bold design with gradient colors
-                                        and modern styling</p>
+                                    <p class="text-sm text-gray-600 text-center mb-4">Bold design and modern styling</p>
                                     <button type="button"
                                         class="w-full bg-secondary text-white py-2 rounded-lg hover:bg-opacity-90 transition-all select-template"
                                         data-template="template2">

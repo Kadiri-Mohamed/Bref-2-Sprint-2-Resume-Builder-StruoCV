@@ -18,6 +18,10 @@ export function PrevProgress(progress) {
   }
 }
 export function addLanguage(e) {
+  if(document.getElementById("language").value == "" || document.getElementById("languageLevel").value == ""){
+    alert("Please enter a language and level");
+    return;
+  }
   languagesList.push({ language: document.getElementById("language").value, level: document.getElementById("languageLevel").value });
   document.getElementById("languagesList").innerHTML += ` <li class="language flex justify-between bg-tertiary items-center rounded-2xl mt-2">
        <div class="flex gap-16 justify-between">
@@ -40,17 +44,22 @@ export function addLanguage(e) {
 
 // add
 export function addSkill(e) {
-  skillsList.push(document.getElementById("skill").value);
-  document.getElementById("skillsList").innerHTML += ` <li class="skill flex justify-between bg-tertiary items-center w-full rounded-2xl mt-2">
+  if (document.getElementById("skill").value != "") {
+
+    skillsList.push(document.getElementById("skill").value);
+    document.getElementById("skillsList").innerHTML += ` <li class="skill flex justify-between bg-tertiary items-center w-full rounded-2xl mt-2">
         <span class="font-semibold text-gray-900 dark:text-white skillName px-5">${document.getElementById("skill").value}</span> 
         <button type="button" class="text-white deleteSkill bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">remove</button>
     </li>  `;
-  document.getElementById("skill").value = "";
-  const deleteSkillButtons = document.getElementsByClassName("deleteSkill");
-  for (const element of deleteSkillButtons) {
-    element.addEventListener("click", (e) => {
-      deleteSkill(e);
-    })
+    document.getElementById("skill").value = "";
+    const deleteSkillButtons = document.getElementsByClassName("deleteSkill");
+    for (const element of deleteSkillButtons) {
+      element.addEventListener("click", (e) => {
+        deleteSkill(e);
+      })
+    }
+  }else{
+    alert('Please enter a skill')
   }
   console.log(skillsList);
 }
@@ -242,7 +251,7 @@ export function getPicture(e) {
       document.getElementById("cvPic").nextElementSibling.style.display = "none";
       document.getElementById("cvPic").nextElementSibling.nextElementSibling.style.display = "none";
       document.getElementById("cvPic").src = e.target.result;
-      
+
       //stok temporary
       document.getElementById("cvPic").dataset.imageData = e.target.result;
     }
@@ -256,7 +265,7 @@ export function getPicture(e) {
 export function saveData() {
   const cvPicElement = document.getElementById("cvPic");
   const cvPic = cvPicElement.dataset.imageData;
-  
+
   const userData = {
     personalData: {
       cvPic: cvPic,
@@ -284,71 +293,71 @@ export function loadData() {
 }
 
 export function displayCVReview(data) {
-    // Profile Picture
-    const cvPicElement = document.getElementById('cv-review-pic');
-    if (data.personalData.cvPic) {
-        cvPicElement.src = data.personalData.cvPic;
-        cvPicElement.style.display = 'block';
-    } else {
-        cvPicElement.style.display = 'none';
-    }
+  // Profile Picture
+  const cvPicElement = document.getElementById('cv-review-pic');
+  if (data.personalData.cvPic) {
+    cvPicElement.src = data.personalData.cvPic;
+    cvPicElement.style.display = 'block';
+  } else {
+    cvPicElement.style.display = 'none';
+  }
 
-    // Personal Information
-    document.getElementById('cv-review-name').textContent = `${data.personalData.firstName} ${data.personalData.lastName}`;
-    document.getElementById('cv-review-email').textContent = data.personalData.email;
-    document.getElementById('cv-review-phone').textContent = data.personalData.phone;
-    document.getElementById('cv-review-address').textContent = `${data.personalData.address}, ${data.personalData.city}, ${data.personalData.country}`;
-    document.getElementById('cv-review-summary').textContent = data.personalData.summary;
+  // Personal Information
+  document.getElementById('cv-review-name').textContent = `${data.personalData.firstName} ${data.personalData.lastName}`;
+  document.getElementById('cv-review-email').textContent = data.personalData.email;
+  document.getElementById('cv-review-phone').textContent = data.personalData.phone;
+  document.getElementById('cv-review-address').textContent = `${data.personalData.address}, ${data.personalData.city}, ${data.personalData.country}`;
+  document.getElementById('cv-review-summary').textContent = data.personalData.summary;
 
-    // Education
-    const educationsList = document.getElementById('cv-review-educations');
-    educationsList.innerHTML = '';
-    if (data.educations && data.educations.length > 0) {
-        data.educations.forEach(edu => {
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>${edu.degree}</strong> in ${edu.fieldOfStudy} - ${edu.institution} (${edu.startDate} - ${edu.endDate})`;
-            educationsList.appendChild(li);
-        });
-    } else {
-        educationsList.innerHTML = '<li>No education added</li>';
-    }
+  // Education
+  const educationsList = document.getElementById('cv-review-educations');
+  educationsList.innerHTML = '';
+  if (data.educations && data.educations.length > 0) {
+    data.educations.forEach(edu => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${edu.degree}</strong> in ${edu.fieldOfStudy} - ${edu.institution} (${edu.startDate} - ${edu.endDate})`;
+      educationsList.appendChild(li);
+    });
+  } else {
+    educationsList.innerHTML = '<li>No education added</li>';
+  }
 
-    // Experience
-    const experiencesList = document.getElementById('cv-review-experiences');
-    experiencesList.innerHTML = '';
-    if (data.experiences && data.experiences.length > 0) {
-        data.experiences.forEach(exp => {
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>${exp.jobTitleExp}</strong> at ${exp.company} (${exp.startDateExp} - ${exp.endDateExp})`;
-            experiencesList.appendChild(li);
-        });
-    } else {
-        experiencesList.innerHTML = '<li>No experience added</li>';
-    }
+  // Experience
+  const experiencesList = document.getElementById('cv-review-experiences');
+  experiencesList.innerHTML = '';
+  if (data.experiences && data.experiences.length > 0) {
+    data.experiences.forEach(exp => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${exp.jobTitleExp}</strong> at ${exp.company} (${exp.startDateExp} - ${exp.endDateExp})`;
+      experiencesList.appendChild(li);
+    });
+  } else {
+    experiencesList.innerHTML = '<li>No experience added</li>';
+  }
 
-    // Skills
-    const skillsList = document.getElementById('cv-review-skills');
-    skillsList.innerHTML = '';
-    if (data.skills && data.skills.length > 0) {
-        data.skills.forEach(skill => {
-            const li = document.createElement('li');
-            li.textContent = skill;
-            skillsList.appendChild(li);
-        });
-    } else {
-        skillsList.innerHTML = '<li>No skills added</li>';
-    }
+  // Skills
+  const skillsList = document.getElementById('cv-review-skills');
+  skillsList.innerHTML = '';
+  if (data.skills && data.skills.length > 0) {
+    data.skills.forEach(skill => {
+      const li = document.createElement('li');
+      li.textContent = skill;
+      skillsList.appendChild(li);
+    });
+  } else {
+    skillsList.innerHTML = '<li>No skills added</li>';
+  }
 
-    // Languages
-    const languagesList = document.getElementById('cv-review-languages');
-    languagesList.innerHTML = '';
-    if (data.languages && data.languages.length > 0) {
-        data.languages.forEach(lang => {
-            const li = document.createElement('li');
-            li.textContent = `${lang.language} - ${lang.level}`;
-            languagesList.appendChild(li);
-        });
-    } else {
-        languagesList.innerHTML = '<li>No languages added</li>';
-    }
+  // Languages
+  const languagesList = document.getElementById('cv-review-languages');
+  languagesList.innerHTML = '';
+  if (data.languages && data.languages.length > 0) {
+    data.languages.forEach(lang => {
+      const li = document.createElement('li');
+      li.textContent = `${lang.language} - ${lang.level}`;
+      languagesList.appendChild(li);
+    });
+  } else {
+    languagesList.innerHTML = '<li>No languages added</li>';
+  }
 }

@@ -7,17 +7,17 @@ function loadCVData() {
         return;
     }
 
-    // Profile Picture
+    // Pic
     if (data.personalData.cvPic) {
         document.getElementById('template-pic').src = data.personalData.cvPic;
     } else {
         document.getElementById('template-pic').style.display = 'none';
     }
 
-    // Personal Information
     document.getElementById('template-name').textContent =
         `${data.personalData.firstName} ${data.personalData.lastName}`;
     document.getElementById('template-email').textContent = data.personalData.email;
+    document.getElementById('template-email').setAttribute('href', `mailto:${data.personalData.email}`);
     document.getElementById('template-phone').textContent = data.personalData.phone;
     document.getElementById('template-address').textContent =
         `${data.personalData.address}, ${data.personalData.city}, ${data.personalData.country}`;
@@ -61,7 +61,7 @@ function loadCVData() {
     if (data.skills && data.skills.length > 0) {
         data.skills.forEach(skill => {
             const skillDiv = document.createElement('div');
-            skillDiv.className = 'flex items-center bg-white p-2 rounded shadow-sm';
+            skillDiv.className = 'flex items-center bg-white p-2 rounded';
             skillDiv.innerHTML = `
                         <i class="fas fa-check-circle text-secondary mr-2"></i>
                         <span class="text-gray-700">${skill}</span>
@@ -75,7 +75,7 @@ function loadCVData() {
     if (data.languages && data.languages.length > 0) {
         data.languages.forEach(lang => {
             const langDiv = document.createElement('div');
-            langDiv.className = 'flex justify-between items-center bg-white p-2 rounded shadow-sm';
+            langDiv.className = 'flex justify-between items-center bg-white p-2 rounded';
             langDiv.innerHTML = `
                         <span class="text-gray-700 font-semibold">${lang.language}</span>
                         <span class="text-sm bg-secondary text-white px-2 py-1 rounded">${lang.level}</span>
@@ -84,19 +84,19 @@ function loadCVData() {
         });
     }
 }
- downloadButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        var element = document.getElementById('cv-content');
-        var opt = {
-            margin: 0,
-            filename: 'myCV.pdf',
-            image: { type: 'jpeg'},
-            // html2canvas: { scale: 2 },
-            jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
-        };
+downloadButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    var element = document.getElementById('cv-content');
+    var opt = {
+        margin: 0,
+        filename: 'myCV.pdf',
+        image: { type: 'jpeg' },
+        // html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+    };
 
-        // New Promise-based usage:
-        html2pdf().set(opt).from(element).save();
-    })
+    // New Promise-based usage:
+    html2pdf().set(opt).from(element).save();
+})
 
 window.addEventListener('DOMContentLoaded', loadCVData);
