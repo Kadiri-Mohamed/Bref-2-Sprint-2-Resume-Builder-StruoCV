@@ -241,15 +241,14 @@ export function getPicture(e) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
-      // console.log(e.target.result);
       document.getElementById("cvPic").style.width = "150px";
       document.getElementById("cvPic").nextElementSibling.style.display = "none";
       document.getElementById("cvPic").nextElementSibling.nextElementSibling.style.display = "none";
       document.getElementById("cvPic").src = e.target.result;
-      // console.log(typeof e.target.result);
-      saveData(e.target.result);
+      
+      //stok temporary
+      document.getElementById("cvPic").dataset.imageData = e.target.result;
     }
-
   } else {
     alert("File size should be less than 2MB");
   }
@@ -257,7 +256,10 @@ export function getPicture(e) {
 }
 
 
-export function saveData(cvPic) {
+export function saveData() {
+  const cvPicElement = document.getElementById("cvPic");
+  const cvPic = cvPicElement.dataset.imageData;
+  
   const userData = {
     personalData: {
       cvPic: cvPic,
@@ -284,3 +286,72 @@ export function loadData() {
   if (userData) return userData;
 }
 
+export function displayCVReview(data) {
+    // Profile Picture
+    const cvPicElement = document.getElementById('cv-review-pic');
+    if (data.personalData.cvPic) {
+        cvPicElement.src = data.personalData.cvPic;
+        cvPicElement.style.display = 'block';
+    } else {
+        cvPicElement.style.display = 'none';
+    }
+
+    // Personal Information
+    document.getElementById('cv-review-name').textContent = `${data.personalData.firstName} ${data.personalData.lastName}`;
+    document.getElementById('cv-review-email').textContent = data.personalData.email;
+    document.getElementById('cv-review-phone').textContent = data.personalData.phone;
+    document.getElementById('cv-review-address').textContent = `${data.personalData.address}, ${data.personalData.city}, ${data.personalData.country}`;
+    document.getElementById('cv-review-summary').textContent = data.personalData.summary;
+
+    // Education
+    const educationsList = document.getElementById('cv-review-educations');
+    educationsList.innerHTML = '';
+    if (data.educations && data.educations.length > 0) {
+        data.educations.forEach(edu => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${edu.degree}</strong> in ${edu.fieldOfStudy} - ${edu.institution} (${edu.startDate} - ${edu.endDate})`;
+            educationsList.appendChild(li);
+        });
+    } else {
+        educationsList.innerHTML = '<li>No education added</li>';
+    }
+
+    // Experience
+    const experiencesList = document.getElementById('cv-review-experiences');
+    experiencesList.innerHTML = '';
+    if (data.experiences && data.experiences.length > 0) {
+        data.experiences.forEach(exp => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${exp.jobTitleExp}</strong> at ${exp.company} (${exp.startDateExp} - ${exp.endDateExp})`;
+            experiencesList.appendChild(li);
+        });
+    } else {
+        experiencesList.innerHTML = '<li>No experience added</li>';
+    }
+
+    // Skills
+    const skillsList = document.getElementById('cv-review-skills');
+    skillsList.innerHTML = '';
+    if (data.skills && data.skills.length > 0) {
+        data.skills.forEach(skill => {
+            const li = document.createElement('li');
+            li.textContent = skill;
+            skillsList.appendChild(li);
+        });
+    } else {
+        skillsList.innerHTML = '<li>No skills added</li>';
+    }
+
+    // Languages
+    const languagesList = document.getElementById('cv-review-languages');
+    languagesList.innerHTML = '';
+    if (data.languages && data.languages.length > 0) {
+        data.languages.forEach(lang => {
+            const li = document.createElement('li');
+            li.textContent = `${lang.language} - ${lang.level}`;
+            languagesList.appendChild(li);
+        });
+    } else {
+        languagesList.innerHTML = '<li>No languages added</li>';
+    }
+}

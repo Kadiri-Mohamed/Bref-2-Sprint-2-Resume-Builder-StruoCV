@@ -5,8 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script> -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <title>CV Maker</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.css" rel="stylesheet" /> -->
+
     <link rel="stylesheet" href="./assets/css/style.css">
     <script>
         tailwind.config = {
@@ -141,14 +147,14 @@
                                 <label for="institution"
                                     class="block text-sm font-medium text-gray-700 mb-1">Institution</label>
                                 <input type="text" id="institution" name="institution"
-                                    placeholder="Enter institution name" required
+                                    placeholder="Enter institution name"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                             <div>
                                 <label for="degree"
                                     class="block text-sm font-medium text-gray-700 mb-1">Degree/Certificate</label>
                                 <input type="text" id="degree" name="degree"
-                                    placeholder="Enter degree or certificate name" required
+                                    placeholder="Enter degree or certificate name"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                         </div>
@@ -157,20 +163,20 @@
                             <label for="fieldOfStudy" class="block text-sm font-medium text-gray-700 mb-1">Field of
                                 Study</label>
                             <input type="text" id="fieldOfStudy" name="fieldOfStudy" placeholder="Enter field of study"
-                                required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                             <div>
                                 <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1">Start
                                     Date</label>
-                                <input type="month" id="startDate" name="startDate" required
+                                <input type="month" id="startDate" name="startDate"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                             <div>
                                 <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1">End
                                     Date</label>
-                                <input type="month" id="endDate" name="endDate" required
+                                <input type="month" id="endDate" name="endDate"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                         </div>
@@ -180,8 +186,7 @@
                                 class="block text-sm font-medium text-gray-700 mb-1">Description</label>
                             <textarea id="educationDescription" name="educationDescription" rows="3"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                placeholder="Describe your academic achievements, relevant coursework, etc."
-                                required></textarea>
+                                placeholder="Describe your academic achievements, relevant coursework, etc."></textarea>
                         </div>
                         <button
                             class="bg-tertiary text-black px-3 align-middle h-8 rounded-lg flex justify-center items-cente mt-4"
@@ -203,12 +208,12 @@
                             <label for="jobTitleExp" class="block text-sm font-medium text-gray-700 mb-1">Job
                                 Title</label>
                             <input type="text" id="jobTitleExp" name="jobTitleExp" placeholder="Enter your job title"
-                                required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                         </div>
 
                         <div class="mb-4">
                             <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
-                            <input type="text" id="company" name="company" placeholder="Enter company name" required
+                            <input type="text" id="company" name="company" placeholder="Enter company name"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                         </div>
 
@@ -216,13 +221,13 @@
                             <div>
                                 <label for="startDateExp" class="block text-sm font-medium text-gray-700 mb-1">Start
                                     Date</label>
-                                <input type="month" id="startDateExp" name="startDateExp" required
+                                <input type="month" id="startDateExp" name="startDateExp"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                             <div>
                                 <label for="endDateExp" class="block text-sm font-medium text-gray-700 mb-1">End
                                     Date</label>
-                                <input type="month" id="endDateExp" name="endDateExp" required
+                                <input type="month" id="endDateExp" name="endDateExp"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                             </div>
                         </div>
@@ -232,8 +237,7 @@
                                 class="block text-sm font-medium text-gray-700 mb-1">Description</label>
                             <textarea id="experienceDescription" name="experienceDescription" rows="4"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                placeholder="Describe your responsibilities, achievements, and skills used in this role"
-                                required></textarea>
+                                placeholder="Describe your responsibilities, achievements, and skills used in this role"></textarea>
                         </div>
                         <button
                             class="bg-tertiary text-black px-3 align-middle h-8 rounded-lg flex justify-center items-cente mt-4"
@@ -309,12 +313,62 @@
                     </div>
                 </div>
 
-                <div id="step4" class="stepper__form__step" style="display:none;">
+                <div id="step4" class="stepper__form__step" style="display: none;">
                     <h2 class="text-3xl font-bold text-primary mb-6 text-center">Complete!</h2>
-                    <img id="cvPicValidation" alt="">
-                    <p class="text-center text-gray-600">Your CV has been created successfully.</p>
+
+                    <div class="cv-review bg-white p-6 rounded-lg shadow-md">
+                        <div class="cv-review__header mb-6">
+                            <h2 class="text-2xl font-bold text-primary mb-2">CV Review</h2>
+                            <p class="text-gray-600">Please review your CV before downloading.</p>
+                        </div>
+
+                        <div class="cv-review__content space-y-6">
+                            <div class="cv-review__content__item flex justify-center">
+                                <img id="cv-review-pic" src="" alt="Profile Picture"
+                                    class="w-32 h-32 rounded-full object-cover border-4 border-tertiary"
+                                    style="display: none;">
+                            </div>
+                            <!-- Personal Information -->
+                            <div class="cv-review__content__item">
+                                <h3 class="text-xl font-bold text-primary mb-3">Personal Information</h3>
+                                <div class="text-gray-700">
+                                    <p><strong>Name:</strong> <span id="cv-review-name"></span></p>
+                                    <p><strong>Email:</strong> <span id="cv-review-email"></span></p>
+                                    <p><strong>Phone:</strong> <span id="cv-review-phone"></span></p>
+                                    <p><strong>Address:</strong> <span id="cv-review-address"></span></p>
+                                    <p><strong>Summary:</strong> <span id="cv-review-summary"></span></p>
+                                </div>
+                            </div>
+
+                            <!-- Education -->
+                            <div class="cv-review__content__item">
+                                <h3 class="text-xl font-bold text-primary mb-3">Education</h3>
+                                <ul id="cv-review-educations" class="list-disc list-inside text-gray-700 space-y-2">
+                                </ul>
+                            </div>
+
+                            <!-- Experience -->
+                            <div class="cv-review__content__item">
+                                <h3 class="text-xl font-bold text-primary mb-3">Work Experience</h3>
+                                <ul id="cv-review-experiences" class="list-disc list-inside text-gray-700 space-y-2">
+                                </ul>
+                            </div>
+
+                            <!-- Skills -->
+                            <div class="cv-review__content__item">
+                                <h3 class="text-xl font-bold text-primary mb-3">Skills</h3>
+                                <ul id="cv-review-skills" class="list-disc list-inside text-gray-700 space-y-1"></ul>
+                            </div>
+
+                            <!-- Languages -->
+                            <div class="cv-review__content__item">
+                                <h3 class="text-xl font-bold text-primary mb-3">Languages</h3>
+                                <ul id="cv-review-languages" class="list-disc list-inside text-gray-700 space-y-1"></ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
+                <div class="flex">
                     <button type="button" id="prevButton"
                         class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
                         Previous
@@ -323,12 +377,64 @@
                         class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto">
                         Next
                     </button>
+                    <!-- <button type="button" id="telechargerButton"
+                        class="px-7 py-2 bg-secondary text-white rounded-full mt-8 mx-auto hidden">
+                        Download
+                    </button> -->
+                    <button data-modal-target="default-modal" id="choiceButton" data-modal-toggle="default-modal"
+                        class="hidden text-white bg-secondary text-sm px-7 py-2 rounded-full mt-8 mx-auto text-center"
+                        type="button">
+                        Choose a template
+                    </button>
                 </div>
             </form>
 
+            <!-- Main modal -->
+            <div id="default-modal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-2xl max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div
+                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                CV choice
+                            </h3>
+                            <button type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-hide="default-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="p-4 md:p-5 space-y-4 flex justify-around items-center">
+                            <div class="flex justify-center items-center mt-4">
+
+                                <img src="./assets/images/user4.webp" alt="" class="w-[50%] m-0">
+                            </div>
+                            <div class="flex justify-center items-start " >
+
+                                <img src="./assets/images/user4.webp" alt="" class="w-[50%] ">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </section>
     </main>
-
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.0/dist/flowbite.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script type="module" src="./assets/js/app.js"></script>
 </body>
 

@@ -4,9 +4,11 @@ import * as validation from './validation.js';
 const progress = document.getElementById("progress");
 const nextButton = document.getElementById("nextButton");
 const prevButton = document.getElementById("prevButton");
+const downloadButton = document.getElementById("telechargerButton");
+const choiceButton = document.getElementById("choiceButton");
 const formSteps = document.querySelectorAll(".stepper__form__step");
 let data = {};
-let counter = 2;
+let counter = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -27,6 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
         handleFormDisplay();
 
         nextButton.addEventListener("click", (e) => {
+            helpers.saveData();
             if (validation.validateCurrentStep(counter)) {
                 helpers.NextProgress(progress);
                 counter++;
@@ -41,11 +44,13 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             if (counter == 3) {
                 data = helpers.loadData();
-                let cvPic = data.personalData.cvPic;
-                console.log(typeof data.personalData.cvPic);
-                document.getElementById("cvPicValidation").src = cvPic;
+                helpers.displayCVReview(data);
+                choiceButton.style.display = "block";
+                choiceButton.previousElementSibling.style.display = "none";
+                // choiceButton.addEventListener("click", () => {
+                //     // helpers.downloadCV();
+                // })
             }
-
         });
         document.getElementById("stepper__form").addEventListener("submit", (e) => {
             e.preventDefault();
@@ -56,9 +61,14 @@ window.addEventListener("DOMContentLoaded", () => {
         prevButton.addEventListener("click", (e) => {
             helpers.PrevProgress(progress);
             if (counter == 2) {
+
                 nextButton.innerText = "Next";
                 nextButton.setAttribute("type", "button");
 
+            }
+            if (counter == 3) {
+                nextButton.style.display = "block";
+                choiceButton.style.display = "none";
             }
             counter--;
             if (counter < 0) {
@@ -108,6 +118,21 @@ window.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         helpers.getPicture(e);
     });
+
+    // downloadButton.addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     var element = document.getElementById('step4');
+    //     var opt = {
+    //         margin: 0,
+    //         filename: 'myCV.pdf',
+    //         image: { type: 'jpeg'},
+    //         html2canvas: { scale: 2 },
+    //         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    //     };
+
+    //     // New Promise-based usage:
+    //     html2pdf().set(opt).from(element).save();
+    // })
 
 
     // Array(document.getElementsByClassName("deleteSkill")).forEach((element) => {
